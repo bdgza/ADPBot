@@ -1,7 +1,7 @@
 // setup
 var inputData = JSON.parse(inputString);
 var msg = [];
-var isVerbose = inputData.verbose;
+var isVerbose = false; //inputData.verbose;
 var action = inputData.action;
 var coalitionNP = inputData.npcoalition;
 var governmentNP = inputData.npgovernment;
@@ -34,6 +34,20 @@ var kPashtun = [
 	"Waziristan (Pakistan)", "Khowst", "Ghazni", "Kabul", "Nuristan", 
 	"Northwest Frontier (Pakistan)", "Ghowr", "Kandahar"
 ];
+var kNonPashtun = [
+    "Balochistan (Pakistan)", "Herat", "Badghis",
+	"Baghlan",
+	"Konduz", "Badakhshan", "Samangan",
+	"Balkh", "Faryab",
+	"Sar-e-Pol", "Bamian",
+];
+var kNonPashtunNonPakistan = [
+    "Herat", "Badghis",
+	"Baghlan",
+	"Konduz", "Badakhshan", "Samangan",
+	"Balkh", "Faryab",
+	"Sar-e-Pol", "Bamian",
+];
 var kSpacesTable = [
 	"Balochistan (Pakistan)", "Nimruz", "Farah",
 	"Herat", "Badghis", "Helmand",
@@ -41,6 +55,17 @@ var kSpacesTable = [
 	"Waziristan (Pakistan)", "Khowst", "Ghazni",
 	"Kabul", "Kabul", "Kabul",
 	"Nuristan", "Baghlan", "Northwest Frontier (Pakistan)",
+	"Konduz", "Badakhshan", "Samangan",
+	"Balkh", "Faryab", "Ghowr",
+	"Sar-e-Pol", "Bamian", "Kandahar"
+];
+var kSpacesNonPakistan = [
+	"Nimruz", "Farah",
+	"Herat", "Badghis", "Helmand",
+	"Zabol", "Oruzgan", "Paktika",
+	"Khowst", "Ghazni",
+	"Kabul",
+	"Nuristan", "Baghlan",
 	"Konduz", "Badakhshan", "Samangan",
 	"Balkh", "Faryab", "Ghowr",
 	"Sar-e-Pol", "Bamian", "Kandahar"
@@ -56,6 +81,51 @@ var kSpaces = [
 	"Balkh", "Faryab", "Ghowr",
 	"Sar-e-Pol", "Bamian", "Kandahar"
 ];
+var kLoCSpaces = [
+    "Kabul-Tor Kham LOC",
+    "Kabul-Aibak LOC",
+    "Shibirghan-Aibak LOC",
+    "Farah-Kandahar LOC",
+    "Toraghondi-Farah LOC",
+    "Kandahar-Spin Boldak LOC",
+    "Kandahar-Kabul LOC"
+];
+var provinces = {
+	"Badakhshan": {pop: 1, adjacencies: [ "Northwest Frontier (Pakistan)", "Nuristan", "Baghlan", "Konduz" ]},
+	"Badghis": {pop: 1, adjacencies: [ "Faryab", "Sar-e-Pol", "Ghowr", "Herat" ]},
+	"Baghlan": {pop: 2, adjacencies: [ "Konduz", "Badakhshan", "Nuristan", "Kabul", "Samangan", "Balkh" ]},
+	"Balkh": {pop: 2, adjacencies: [ "Konduz", "Baghlan", "Samangan", "Sar-e-Pol", "Faryab" ]},
+	"Balochistan (Pakistan)": {pop: 0, adjacencies: [ "Nimruz", "Helmand", "Kandahar", "Waziristan (Pakistan)" ]},
+	"Bamian": {pop: 1, adjacencies: [ "Samangan", "Kabul", "Khowst", "Ghazni", "Oruzgan", "Sar-e-Pol" ]},
+	"Farah": {pop: 0, adjacencies: [ "Herat", "Ghowr", "Nimruz" ]},
+	"Faryab": {pop: 1, adjacencies: [ "Balkh", "Sar-e-Pol", "Badghis" ]},
+	"Ghazni": {pop: 1, adjacencies: [ "Bamian", "Khowst", "Paktika", "Zabol", "Oruzgan" ]},
+	"Ghowr": {pop: 1, adjacencies: [ "Badghis", "Sar-e-Pol", "Oruzgan", "Helmand", "Nimruz", "Farah", "Herat" ]},
+	"Helmand": {pop: 1, adjacencies: [ "Oruzgan", "Kandahar", "Balochistan (Pakistan)", "Nimruz", "Ghowr" ]},
+	"Herat": {pop: 1, adjacencies: [ "Badghis", "Ghowr", "Farah" ]},
+	"Kabul": {pop: 3, adjacencies: [ "Baghlan", "Nuristan", "Khowst", "Bamian", "Samangan" ]},
+	"Kandahar": {pop: 2, adjacencies: [ "Oruzgan", "Zabol", "Waziristan (Pakistan)", "Balochistan (Pakistan)", "Helmand" ]},
+	"Khowst": {pop: 2, adjacencies: [ "Nuristan", "Northwest Frontier (Pakistan)", "Waziristan (Pakistan)", "Paktika", "Ghazni", "Bamian", "Kabul" ]},
+	"Konduz": {pop: 2, adjacencies: [ "Badakhshan", "Baghlan", "Balkh" ]},
+    "Nimruz": {pop: 0, adjacencies: [ "Ghowr", "Helmand", "Balochistan (Pakistan)", "Farah" ]},
+	"Northwest Frontier (Pakistan)": {pop: 1, adjacencies: [ "Waziristan (Pakistan)", "Khowst", "Nuristan", "Badakhshan" ]},
+	"Nuristan": {pop: 2, adjacencies: [ "Badakhshan", "Northwest Frontier (Pakistan)", "Khowst", "Kabul", "Baghlan" ]},
+	"Oruzgan": {pop: 1, adjacencies: [ "Bamian", "Ghazni", "Zabol", "Kandahar", "Helmand", "Ghowr", "Sar-e-Pol" ]},
+	"Paktika": {pop: 1, adjacencies: [ "Khowst", "Waziristan (Pakistan)", "Zabol", "Ghazni" ]},
+	"Samangan": {pop: 0, adjacencies: [ "Baghlan", "Kabul", "Bamian", "Sar-e-Pol", "Balkh" ]},
+	"Sar-e-Pol": {pop: 0, adjacencies: [ "Balkh", "Samangan", "Bamian", "Oruzgan", "Ghowr", "Badghis", "Faryab" ]},
+	"Waziristan (Pakistan)": {pop: 1, adjacencies: [ "Northwest Frontier (Pakistan)", "Balochistan (Pakistan)", "Kandahar", "Zabol", "Pakistan", "Khowst" ]},
+	"Zabol": {pop: 0, adjacencies: [ "Ghazni", "Paktika", "Waziristan (Pakistan)", "Kandahar", "Oruzgan" ]}
+};
+var locs = {
+    "Kabul-Tor Kham LOC": { econ: 4, adjacencies: [ "Nuristan", "Kabul", "Khowst", "Northwest Frontier (Pakistan)" ] },
+    "Kabul-Aibak LOC": { econ: 1, adjacencies: [ "Kabul", "Baghlan", "Balkh", "Samangan" ] },
+    "Shibirghan-Aibak LOC": { econ: 1, adjacencies: [ "Baghlan", "Balkh", "Faryab", "Sar-e-Pol", "Samangan" ] },
+    "Farah-Kandahar LOC": { econ: 1, adjacencies: [ "Farah", "Nimruz", "Helmand", "Kandahar", "Zabol", "Oruzgan", "Ghowr" ] },
+    "Toraghondi-Farah LOC": { econ: 1, adjacencies: [ "Badghis", "Ghowr", "Nimruz", "Farah", "Herat" ] },
+    "Kandahar-Spin Boldak LOC": { econ: 3, adjacencies: [ "Oruzgan", "Kandahar", "Zabol", "Waziristan (Pakistan)" ] },
+    "Kandahar-Kabul LOC": { econ: 1, adjacencies: [ "Kandahar", "Zabol", "Paktika", "Khowst", "Kabul", "Bamian", "Ghazni", "Oruzgan" ] }
+};
 
 // utility functions
 
@@ -100,12 +170,45 @@ function findAvailableForces() {
 	availableBasesTaliban = countAtZone("Taliban Available Forces", "Taliban Base");
 }
 
+function adjustForReturnees() {
+    for (var key in provinces) {
+        provinces[key].pop += countAtZone(key, 'Returnees');
+        if (isVerbose) msg.push('Population ' + key + ' = ' + provinces[key].pop);
+    }
+}
+
 function zoneContains(zone, pieceName) {
 	for (var i = 0; i < zone.pieces.length; i++) {
-		if (zone.pieces[i].name == pieceName)
+		if (zone.pieces[i].name.startsWith(pieceName))
 			return true;
 	}
 	return false;
+}
+
+function deactivateZonePieces(zoneName, pieceName) {
+    var zone = getZone(zoneName);
+    var activePieceName = pieceName + ' Active';
+    for (var i = 0; i < zone.pieces.length; i++) {
+		if (zone.pieces[i].name == activePieceName)
+			zone.pieces[i].name = pieceName;
+	}
+}
+
+function removePiece(zoneName, pieceName) {
+    var zone = getZone(zoneName);
+    var activePieceName = pieceName + ' Active';
+    for (var i = 0; i < zone.pieces.length; i++) {
+		if (zone.pieces[i].name == activePieceName) {
+			zone.pieces.splice(i, 1);
+			return;
+		}
+	}
+	for (var i = 0; i < zone.pieces.length; i++) {
+		if (zone.pieces[i].name == pieceName) {
+			zone.pieces.splice(i, 1);
+			return;
+		}
+	}
 }
 
 function countAtZone(zoneName, pieceName) {
@@ -118,7 +221,7 @@ function countAtZone(zoneName, pieceName) {
 		else
 		{
 			for (var j = 0; j < zone.pieces.length; j++) {
-				if (zone.pieces[j].name == pieceName) count++;
+				if (zone.pieces[j].name.startsWith(pieceName)) count++;
 			}
 		}
 	}
@@ -186,7 +289,7 @@ function getNextCard() {
 
 function getMomentumCards() {
 	// TODO!
-	msg.push("getMomentumCards() TODO");
+	if (isVerbose) msg.push("getMomentumCards() TODO");
 	return [];
 }
 
@@ -302,6 +405,7 @@ function pickRandomZone(candidates, selector) {
 
 function filterZones(candidates, selector) {
 	var output = [];
+	if (candidates == null || candidates.length == 0) return output;
 	for (var i = 0; i < candidates.length; i++) {
 		var c = candidates[i];
 		var z = getZone(c);
@@ -433,12 +537,283 @@ function warlordsEvent() {
 }
 
 function warlordsOperation() {
-	// available warlord forces
-	if (availableForcesWarlords >= 6) {
-		// Rally, in up to three provinces
-		if (isVerbose) msg.push("Should Rally");
-
+    // check for 0 resources
+    if (warlordsResources == 0) {
+        // no Resources to do any ops
+        msg.push('# PASS');
+        return;
+    }
+    
+    var loopCount = 1;
+    var activatedProvinces = false;
+    while (loopCount > 0 && loopCount <= 2) {
+        // available warlord forces
+        var tryRally = false;
+        var didRally = false;
+        if (availableForcesWarlords >= 6) {
+            // Rally, in up to three provinces
+            tryRally = true;
+            if (isVerbose) msg.push("Should Rally");
+            didRally = activatedProvinces = warlordsRally();
+        }
+    
+        var tryMarch = false;
+        var didMarch = false;
+        if (true || !didRally && (tryRally || ((12 - availableBasesWarlords) + warlordsResources) <= 50)) {
+            // March?
+            tryMarch = true;
+            if (isVerbose) msg.push("Should March");
+            didMarch = activatedProvinces = warlordsMarch();
+        }
+    
+        var tryTerror = false;
+        var didTerror = false;
+        if (!didRally && !didMarch) {
+            // Terror?
+            tryTerror = true;
+            if (isVerbose) msg.push("Should Terror");
+            didTerror = warlordsTerror();
+        }
+        
+        if (!didRally && !didMarch && !didTerror) {
+            loopCount++;
+        } else {
+            loopCount = -1;
+        }
+    }
+	
+	if (loopCount > 0) {
+	    // Couldn't do any operation twice
+	    msg.push('# PASS');
+        return;
 	}
+	
+	// special operation
+	var didCultivateTraffic = false;
+	if (didRally || didMarch) {
+	    // Cultivate
+	    if (!warlordsCultivate(activatedProvinces)) {
+	        // Traffic
+	        if (warlordsTraffic())
+	            didCultivateTraffic = true;
+	    } else {
+	        didCultivateTraffic = true;
+	    }
+	}
+	
+	if (didTerror || !didCultivateTraffic) {
+	    // Suborn
+	    warlordsSuborn();
+	}
+}
+
+function warlordsRallyActivateZone(zoneName) {
+    var baseCount = countAtZone(zoneName, 'Warlords Base');
+    if (baseCount > 0 && contains(kNonPashtun, zoneName)) {
+        // place pop + bases
+        var addforces = provinces[zoneName].pop + baseCount;
+        var count = 0;
+        while (count < addforces && availableForcesWarlords > 0) {
+            getZone(zoneName).pieces.push({name: 'Warlords Guerrilla'}); availableForcesWarlords--;
+            count++;
+        }
+        msg.push('# Place ' + count + ' Warlords Guerrillas in ' + zoneName);
+    } else {
+        // place 1
+        msg.push('# Place 1 Warlords Guerrilla in ' + zoneName);
+        getZone(zoneName).pieces.push({name: 'Warlords Guerrilla'}); availableForcesWarlords--;
+    }
+    warlordsResources--;
+}
+
+// return true is Rally performance, false is couldn't Rally
+function warlordsRally() {
+    msg.push('# Rally');
+    provinces = 3;
+    
+    var activatedProvinces = [];
+    
+    while (provinces > 0 && warlordsResources > 0) {
+        var selected = false;
+        
+        // condition 1: Find province with Warlord Guerrillas Active, Warlords Base, and Cube
+        var activeGuerrillaProvinces = filterZones(kNonPashtunNonPakistan, function (zone) {
+            if (contains(activatedProvinces, zone.name)) return false;
+            
+            var base = false;
+            var cube = false;
+            var guerilla = false;
+            var allactive = true;
+            
+            for (var i = 0; i < zone.pieces.length; i++) {
+                if (zone.pieces[i].name == "Warlords Base")
+                    base = true;
+                if (zone.pieces[i].name == "Coalition Troops" || zone.pieces[i].name == "Troops" || zone.pieces[i].name == "Police")
+                    cube = true;
+                if (zone.pieces[i].name.startsWith("Warlords Guerrilla")) {
+                    guerilla = true;
+                    if (zone.pieces[i].name != "Warlords Guerrilla Active")
+                        allactive = false;
+                }
+            }
+            return base && cube && guerilla && allactive;
+        });
+        if (activeGuerrillaProvinces.length > 0) {
+            selected = pickRandomZone(activeGuerrillaProvinces);
+            activatedProvinces.push(selected);
+            msg.push('# Flip all Guerrillas Underground in ' + selected);
+            deactivateZonePieces(selected, 'Warlords Guerrilla');
+            warlordsResources--;
+            provinces--;
+        }
+        
+        if (!selected && availableBasesWarlords > 0) {
+            // condition 2: Find province where 2 Warlords Guerrillas can create a Warlords Base
+            var baseProvinces = filterZones(kSpacesNonPakistan, function (zone) {
+                if (contains(activatedProvinces, zone.name)) return false;
+                return countBasesAtZone(zone.name) < 2 && countAtZone(zone.name, "Warlords Guerrilla") >= 2;
+            });
+            if (baseProvinces.length > 0) {
+                selected = pickRandomZone(baseProvinces);
+                activatedProvinces.push(selected);
+                msg.push('# Replace 2 Warlords Guerrillas with Warlords Base in ' + selected);
+                removePiece(selected, 'Warlords Guerrilla'); availableForcesWarlords++;
+                removePiece(selected, 'Warlords Guerrilla'); availableForcesWarlords++;
+                getZone(selected).pieces.push({name: 'Warlords Base'}); availableBasesWarlords--;
+                warlordsResources--;
+                provinces--;
+            }
+        }
+        
+        // condition 3: weighted random
+        if (!selected && availableForcesWarlords > 0) {
+            // 3.1: Base but no Guerrillas
+            var baseProvinces = filterZones(kSpacesNonPakistan, function (zone) {
+                if (contains(activatedProvinces, zone.name)) return false;
+                return countAtZone(zone.name, "Warlords Base") > 0 && countAtZone(zone.name, 'Warlords Guerrilla') == 0;
+            });
+            if (baseProvinces.length > 0) {
+                selected = pickRandomZone(baseProvinces);
+                activatedProvinces.push(selected);
+                warlordsRallyActivateZone(selected);
+                provinces--;
+            }
+        }
+        
+        if (!selected && availableForcesWarlords > 0) {
+            // 3.2: Guerrillas but no Bases
+            var baseProvinces = filterZones(kSpacesNonPakistan, function (zone) {
+                if (contains(activatedProvinces, zone.name)) return false;
+                return countAtZone(zone.name, "Warlords Base") == 0 && zoneContains(zone, 'Warlords Guerrilla');
+            });
+            if (baseProvinces.length > 0) {
+                selected = pickRandomZone(baseProvinces);
+                activatedProvinces.push(selected);
+                warlordsRallyActivateZone(selected)
+                provinces--;
+            }
+        }
+        
+        if (!selected) {
+            // 3.3: Somewhere to Cultivate if not yet possible
+            // check to see if Cultivate can already be done
+            var baseProvinces = filterZones(activatedProvinces, function (zone) {
+                return countBasesAtZone(zone.name) < 2 && countAtZone(zone.name, 'Warlords Guerrilla') > countAtZone(zone.name, 'Police');
+            });
+            if (baseProvinces.length == 0) {
+                // check to see if we can activate a province to make it Cultivate-able
+                var baseProvinces = filterZones(kSpacesNonPakistan, function (zone) {
+                    if (contains(activatedProvinces, zone.name)) return false;
+                    return countBasesAtZone(zone.name) < 2 && countAtZone(zone.name, 'Warlords Guerrilla') >= countAtZone(zone.name, 'Police');
+                });
+                if (baseProvinces.length > 0) {
+                    // found a province that we can activate to cultivate at
+                    selected = pickRandomZone(baseProvinces);
+                    activatedProvinces.push(selected);
+                    warlordsRallyActivateZone(selected);
+                    provinces--;
+                }
+            }
+        }
+        
+        if (!selected && availableForcesWarlords > 0) {
+            // 3.4: Random
+            var baseProvinces = filterZones(kSpacesNonPakistan, function (zone) {
+                if (contains(activatedProvinces, zone.name)) return false;
+                return true;
+            });
+            if (baseProvinces.length > 0) {
+                selected = pickRandomZone(baseProvinces);
+                activatedProvinces.push(selected);
+                warlordsRallyActivateZone(selected)
+                provinces--;
+            }
+        }
+        
+        if (!selected) {
+            if (provinces == 3) {
+                msg.pop();
+                return false;
+            }
+            provinces = 0;
+        }
+    }
+    
+    msg.push('# Set Warlords Resources to ' + warlordsResources);
+    return activatedProvinces;
+}
+
+function warlordsMarch() {
+    msg.push('# March');
+    
+    var activatedProvinces = [];
+    
+    console.log(kSpacesNonPakistan);
+    // find valid origin provinces for March
+    var origin = filterZones(kSpacesNonPakistan, function (zone) {
+        return true;
+    });
+    
+    // march to 1 empty LoC
+}
+
+function warlordsTerror() {
+
+}
+
+function warlordsCultivate(activatedProvinces) {
+    var selected = false;
+
+    // find province to Cultivate
+    msg.push('# Cultivate');
+    
+    var baseProvinces = filterZones(activatedProvinces, function (zone) {
+        return countBasesAtZone(zone.name) < 2 && countAtZone(zone.name, 'Warlords Guerrilla') > countAtZone(zone.name, 'Police');
+    });
+    if (baseProvinces.length > 0) {
+        // found a province that we can activate to cultivate at
+        var withBase = filterZones(baseProvinces, function (zone) {
+            return countAtZone(zone.name, 'Warlords Base') > 0;
+        });
+        if (withBase.length > 0)
+            baseProvinces = withBase;
+        selected = pickRandomZone(baseProvinces);
+        
+        msg.push('# Place 1 Warlords Base in ' + selected);
+        getZone(selected).pieces.push({name: 'Warlords Base'}); availableBasesWarlords--;
+    } else {
+        msg.pop();
+    }
+    
+    return selected;
+}
+
+function warlordsTraffic() {
+
+}
+
+function warlordsSuborn() {
+
 }
 
 // should consider event?
@@ -455,10 +830,11 @@ var momentum = getMomentumCards();
 
 findResources();
 findAvailableForces();
+adjustForReturnees();
 
 // verbose setup
 
-msg.push("##### ACTIVATED NP = " + action);
+msg.push("# Activated Bot: " + action);
 
 if (isVerbose) {
 	msg.push("Propaganda cards left in deck = " + propagandaCount);
@@ -490,10 +866,12 @@ if (isVerbose) {
 if (action == "Warlords") {
 	// event card
 	var playedEvent = false;
+	/*
 	if (considerEvent) {
 		if (isVerbose) msg.push("Evaluating event");
 		playedEvent = warlordsEvent();
 	}
+	*/
 	
 	if (!playedEvent) {
 		if (isVerbose) msg.push("Finding operation to perform");
@@ -502,5 +880,7 @@ if (action == "Warlords") {
 }
 
 // final
+
+msg.push('# Bot Complete');
 
 msg = msg.join("\n");
