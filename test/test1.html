@@ -1,0 +1,20 @@
+<html>
+<head>
+    <title>ADP Test</title>
+</head>
+<body>
+<p id="output" style="font-family: Monaco; font-size: 9pt;"></p>
+
+<script src="raw1.js"></script>
+
+<script src="../src/json2.js"></script>
+<script src="../src/polyfill.js"></script>
+
+<script src="../src/ai-script.js"></script>
+
+<script>
+msgs = msg.split('\n').join('<br>');
+document.getElementById('output').innerHTML = msgs;
+</script>
+</body>
+</html>
