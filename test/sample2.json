@@ -1,0 +1,2541 @@
+{
+   "npcoalition":true,
+   "npgovernment":true,
+   "nptaliban":true,
+   "npwarlords":true,
+   "propaganda":2,
+   "action":"Warlords",
+   "offboard":[
+
+   ],
+   "zones":[
+      {
+         "name":"0",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"1",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"2",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"3",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"4",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"5",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":"Patronage (5)",
+               "x":1119,
+               "y":68
+            }
+         ]
+      },
+      {
+         "name":"6",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"7",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"8",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"9",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"10",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":"Oppose + Bases (10)",
+               "x":1642,
+               "y":67
+            },
+            {
+               "name":"Taliban Resources (10)",
+               "x":1642,
+               "y":67
+            }
+         ]
+      },
+      {
+         "name":"11",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"12",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"13",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":"Uncontrolled Pop (13)",
+               "x":1956,
+               "y":68
+            }
+         ]
+      },
+      {
+         "name":"14",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":"COIN + Patronage (14)",
+               "x":2061,
+               "y":67
+            }
+         ]
+      },
+      {
+         "name":"15",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":"Warlords Resources (15)",
+               "x":2164,
+               "y":68
+            },
+            {
+               "name":"Aid (15)",
+               "x":2164,
+               "y":68
+            }
+         ]
+      },
+      {
+         "name":"16",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"17",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"18",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"19",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":"Support + Avail (19)",
+               "x":2582,
+               "y":67
+            }
+         ]
+      },
+      {
+         "name":"20",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"21",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"22",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"23",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"24",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"25",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"26",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"27",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"28",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"29",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"30",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":"GOVT Resources (30)",
+               "x":3729,
+               "y":67
+            }
+         ]
+      },
+      {
+         "name":"31",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"32",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"33",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"34",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"35",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"36",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"37",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"38",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"39",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"40",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"41",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"42",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"43",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"44",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"45",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"46",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"47",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"48",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"49",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"50",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"51",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"52",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"53",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"54",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"55",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"56",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"57",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"58",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"59",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"60",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"61",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"62",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"63",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"64",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"65",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"66",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"67",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"68",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"69",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"70",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"71",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"72",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"73",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"74",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"75",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"Coalition Available Forces",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":"Coalition Base",
+               "x":1171,
+               "y":467
+            },
+            {
+               "name":"Coalition Base",
+               "x":1291,
+               "y":336
+            },
+            {
+               "name":"Coalition Troops",
+               "x":822,
+               "y":608
+            },
+            {
+               "name":"Coalition Troops",
+               "x":822,
+               "y":608
+            },
+            {
+               "name":"Coalition Troops",
+               "x":822,
+               "y":608
+            },
+            {
+               "name":"Coalition Troops",
+               "x":822,
+               "y":608
+            },
+            {
+               "name":"Coalition Troops",
+               "x":822,
+               "y":608
+            },
+            {
+               "name":"Coalition Base",
+               "x":1413,
+               "y":467
+            },
+            {
+               "name":"Coalition Base",
+               "x":1291,
+               "y":467
+            },
+            {
+               "name":"Coalition Troops",
+               "x":822,
+               "y":608
+            },
+            {
+               "name":"Coalition Base",
+               "x":1413,
+               "y":336
+            },
+            {
+               "name":"Coalition Troops",
+               "x":822,
+               "y":608
+            },
+            {
+               "name":"Coalition Troops",
+               "x":822,
+               "y":608
+            },
+            {
+               "name":"Coalition Troops",
+               "x":822,
+               "y":608
+            },
+            {
+               "name":"Coalition Troops",
+               "x":822,
+               "y":608
+            },
+            {
+               "name":"Coalition Troops",
+               "x":822,
+               "y":608
+            },
+            {
+               "name":" (11 x)",
+               "x":752,
+               "y":618
+            },
+            {
+               "name":" (Total Available: 16)",
+               "x":1002,
+               "y":618
+            }
+         ]
+      },
+      {
+         "name":"Coalition Casualties",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"Coalition Capabilities",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":"FindFix",
+               "x":1839,
+               "y":566
+            }
+         ]
+      },
+      {
+         "name":"Returnees",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":"Returnees",
+               "x":4805,
+               "y":831
+            },
+            {
+               "name":"Returnees",
+               "x":4805,
+               "y":719
+            },
+            {
+               "name":"Returnees",
+               "x":4693,
+               "y":831
+            },
+            {
+               "name":"Returnees",
+               "x":4693,
+               "y":720
+            }
+         ]
+      },
+      {
+         "name":"Government Available Forces",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":" (18 x)",
+               "x":5201,
+               "y":841
+            },
+            {
+               "name":"-1 Patronage (5)",
+               "x":5154,
+               "y":473
+            },
+            {
+               "name":"Police",
+               "x":5271,
+               "y":831
+            },
+            {
+               "name":"Police",
+               "x":5271,
+               "y":831
+            },
+            {
+               "name":"Police",
+               "x":5271,
+               "y":831
+            },
+            {
+               "name":"Police",
+               "x":5271,
+               "y":831
+            },
+            {
+               "name":"Police",
+               "x":5271,
+               "y":831
+            },
+            {
+               "name":"Police",
+               "x":5271,
+               "y":831
+            },
+            {
+               "name":"+1 Res (Aid:)",
+               "x":5104,
+               "y":423
+            },
+            {
+               "name":"-1 Res (15)",
+               "x":5154,
+               "y":423
+            },
+            {
+               "name":"Police",
+               "x":5271,
+               "y":831
+            },
+            {
+               "name":"+1 Res (Resources:)",
+               "x":5104,
+               "y":373
+            },
+            {
+               "name":"Police",
+               "x":5271,
+               "y":831
+            },
+            {
+               "name":"Police",
+               "x":5271,
+               "y":831
+            },
+            {
+               "name":"-1 Res (30)",
+               "x":5154,
+               "y":373
+            },
+            {
+               "name":"Police",
+               "x":5271,
+               "y":831
+            },
+            {
+               "name":"Police",
+               "x":5271,
+               "y":831
+            },
+            {
+               "name":"Police",
+               "x":5271,
+               "y":831
+            },
+            {
+               "name":"Police",
+               "x":5271,
+               "y":831
+            },
+            {
+               "name":"Police",
+               "x":5271,
+               "y":831
+            },
+            {
+               "name":"Police",
+               "x":5271,
+               "y":831
+            },
+            {
+               "name":"+1 Patronage (Patronage:)",
+               "x":5104,
+               "y":473
+            },
+            {
+               "name":"Police",
+               "x":5271,
+               "y":831
+            },
+            {
+               "name":"Police",
+               "x":5271,
+               "y":831
+            },
+            {
+               "name":"Police",
+               "x":5271,
+               "y":831
+            },
+            {
+               "name":" (23 x)",
+               "x":5044,
+               "y":841
+            },
+            {
+               "name":"Troops",
+               "x":5114,
+               "y":831
+            },
+            {
+               "name":"Troops",
+               "x":5114,
+               "y":831
+            },
+            {
+               "name":"Troops",
+               "x":5114,
+               "y":831
+            },
+            {
+               "name":"Troops",
+               "x":5114,
+               "y":831
+            },
+            {
+               "name":"Troops",
+               "x":5114,
+               "y":831
+            },
+            {
+               "name":"Troops",
+               "x":5114,
+               "y":831
+            },
+            {
+               "name":"Troops",
+               "x":5114,
+               "y":831
+            },
+            {
+               "name":"Troops",
+               "x":5114,
+               "y":831
+            },
+            {
+               "name":"Troops",
+               "x":5114,
+               "y":831
+            },
+            {
+               "name":"Troops",
+               "x":5114,
+               "y":831
+            },
+            {
+               "name":"Troops",
+               "x":5114,
+               "y":831
+            },
+            {
+               "name":"Troops",
+               "x":5114,
+               "y":831
+            },
+            {
+               "name":"Troops",
+               "x":5114,
+               "y":831
+            },
+            {
+               "name":"Troops",
+               "x":5114,
+               "y":831
+            },
+            {
+               "name":"Troops",
+               "x":5114,
+               "y":831
+            },
+            {
+               "name":"Troops",
+               "x":5114,
+               "y":831
+            },
+            {
+               "name":"GOVT Base",
+               "x":5037,
+               "y":1042
+            },
+            {
+               "name":"GOVT Base",
+               "x":5159,
+               "y":1042
+            },
+            {
+               "name":"Troops",
+               "x":5114,
+               "y":831
+            },
+            {
+               "name":"Troops",
+               "x":5114,
+               "y":831
+            },
+            {
+               "name":"GOVT Base",
+               "x":5280,
+               "y":1042
+            },
+            {
+               "name":"Troops",
+               "x":5114,
+               "y":831
+            },
+            {
+               "name":"Troops",
+               "x":5114,
+               "y":831
+            },
+            {
+               "name":"Troops",
+               "x":5114,
+               "y":831
+            },
+            {
+               "name":"Troops",
+               "x":5114,
+               "y":831
+            },
+            {
+               "name":"Troops",
+               "x":5114,
+               "y":831
+            }
+         ]
+      },
+      {
+         "name":"Taliban Available Forces",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":"Taliban Base",
+               "x":5079,
+               "y":3125
+            },
+            {
+               "name":"Taliban Base",
+               "x":4960,
+               "y":3125
+            },
+            {
+               "name":"Taliban Guerrilla",
+               "x":4579,
+               "y":3202
+            },
+            {
+               "name":"Taliban Guerrilla",
+               "x":4579,
+               "y":3202
+            },
+            {
+               "name":"Taliban Guerrilla",
+               "x":4579,
+               "y":3202
+            },
+            {
+               "name":"Taliban Guerrilla",
+               "x":4579,
+               "y":3202
+            },
+            {
+               "name":" (16 x)",
+               "x":4509,
+               "y":3212
+            },
+            {
+               "name":"Taliban Guerrilla",
+               "x":4579,
+               "y":3202
+            },
+            {
+               "name":"Taliban Guerrilla",
+               "x":4579,
+               "y":3202
+            },
+            {
+               "name":"Taliban Guerrilla",
+               "x":4579,
+               "y":3202
+            },
+            {
+               "name":"Taliban Guerrilla",
+               "x":4579,
+               "y":3202
+            },
+            {
+               "name":"Taliban Guerrilla",
+               "x":4579,
+               "y":3202
+            },
+            {
+               "name":"Taliban Guerrilla",
+               "x":4579,
+               "y":3202
+            },
+            {
+               "name":"Taliban Guerrilla",
+               "x":4579,
+               "y":3202
+            },
+            {
+               "name":"Taliban Guerrilla",
+               "x":4579,
+               "y":3202
+            },
+            {
+               "name":"Taliban Guerrilla",
+               "x":4579,
+               "y":3202
+            },
+            {
+               "name":"Taliban Guerrilla",
+               "x":4579,
+               "y":3202
+            },
+            {
+               "name":"Taliban Guerrilla",
+               "x":4579,
+               "y":3202
+            },
+            {
+               "name":"Taliban Guerrilla",
+               "x":4579,
+               "y":3202
+            },
+            {
+               "name":"-1 Res (10)",
+               "x":4539,
+               "y":2889
+            },
+            {
+               "name":"+1 Res (Resources:)",
+               "x":4489,
+               "y":2889
+            },
+            {
+               "name":"Taliban Base",
+               "x":5203,
+               "y":3125
+            },
+            {
+               "name":"Taliban Base",
+               "x":5325,
+               "y":3125
+            }
+         ]
+      },
+      {
+         "name":"Taliban Capabilities",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"Warlords Available Forces",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":"Warlords Base",
+               "x":694,
+               "y":3122
+            },
+            {
+               "name":"Warlords Base",
+               "x":950,
+               "y":2998
+            },
+            {
+               "name":"Warlords Base",
+               "x":822,
+               "y":3001
+            },
+            {
+               "name":"Warlords Base",
+               "x":822,
+               "y":3122
+            },
+            {
+               "name":"Warlords Base",
+               "x":950,
+               "y":3122
+            },
+            {
+               "name":"Warlords Guerrilla Active",
+               "x":819,
+               "y":2532
+            },
+            {
+               "name":"Warlords Guerrilla Active",
+               "x":819,
+               "y":2532
+            },
+            {
+               "name":"Warlords Guerrilla Active",
+               "x":819,
+               "y":2532
+            },
+            {
+               "name":"Warlords Guerrilla Active",
+               "x":819,
+               "y":2532
+            },
+            {
+               "name":" (4 x)",
+               "x":749,
+               "y":2542
+            },
+            {
+               "name":"-1 Res (15)",
+               "x":770,
+               "y":2269
+            },
+            {
+               "name":"+1 Res (Resources:)",
+               "x":720,
+               "y":2269
+            }
+         ]
+      },
+      {
+         "name":"Eligible Factions",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":"GOVT Eligibility",
+               "x":4625,
+               "y":1886
+            },
+            {
+               "name":"Coalition Eligibility",
+               "x":4625,
+               "y":1781
+            },
+            {
+               "name":"Warlords Eligibility",
+               "x":4625,
+               "y":2097
+            },
+            {
+               "name":"Taliban Eligibility",
+               "x":4625,
+               "y":1992
+            }
+         ]
+      },
+      {
+         "name":"Pass",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"Prop Card Marker",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":"Prop Card Marker (0)",
+               "x":4403,
+               "y":2222
+            }
+         ]
+      },
+      {
+         "name":"1st Faction Op Only",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"1st Faction Op with Special Activity",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"1st Faction Event",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"2nd Faction LimOp",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"2nd Faction LimOp or Event",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"2nd Faction Op may add Special Activity",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"Ineligible Factions",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"Victory?",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"Resources",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"Support",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"Redeploy",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"Reset",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"Islamabad: Hostility",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":"Islamabad Hard",
+               "x":3426,
+               "y":2943
+            }
+         ]
+      },
+      {
+         "name":"Islamabad: Pressure",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"Islamabad: Tolerance",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"Islamabad: Backing",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"Islamabad: Sponsorship",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+
+         ]
+      },
+      {
+         "name":"Kabul",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":"COIN Control",
+               "x":3449,
+               "y":1121
+            },
+            {
+               "name":"Coalition Base",
+               "x":3442,
+               "y":1368
+            },
+            {
+               "name":"Coalition Troops",
+               "x":3381,
+               "y":1327
+            },
+            {
+               "name":"Coalition Troops",
+               "x":3413,
+               "y":1301
+            },
+            {
+               "name":"Returnees",
+               "x":3429,
+               "y":1123
+            },
+            {
+               "name":"Police",
+               "x":3483,
+               "y":1250
+            },
+            {
+               "name":"Police",
+               "x":3436,
+               "y":1247
+            },
+            {
+               "name":"Troops",
+               "x":3349,
+               "y":1260
+            },
+            {
+               "name":"Troops",
+               "x":3391,
+               "y":1257
+            },
+            {
+               "name":"Pop / Econ Button",
+               "x":3355,
+               "y":1120
+            }
+         ]
+      },
+      {
+         "name":"Khowst",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":"Returnees",
+               "x":3637,
+               "y":1540
+            },
+            {
+               "name":"Coalition Troops",
+               "x":3471,
+               "y":1665
+            },
+            {
+               "name":"Police",
+               "x":3503,
+               "y":1623
+            },
+            {
+               "name":"Police",
+               "x":3458,
+               "y":1620
+            },
+            {
+               "name":"Troops",
+               "x":3487,
+               "y":1585
+            },
+            {
+               "name":"Pop / Econ Button",
+               "x":3634,
+               "y":1613
+            },
+            {
+               "name":"COIN Control",
+               "x":3568,
+               "y":1562
+            }
+         ]
+      },
+      {
+         "name":"Nuristan",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":"Taliban Base",
+               "x":4045,
+               "y":1199
+            },
+            {
+               "name":"Warlords Base",
+               "x":3917,
+               "y":1186
+            },
+            {
+               "name":"Taliban Guerrilla",
+               "x":4131,
+               "y":1107
+            },
+            {
+               "name":"Taliban Guerrilla",
+               "x":4109,
+               "y":1164
+            },
+            {
+               "name":"Pop / Econ Button",
+               "x":3977,
+               "y":1130
+            },
+            {
+               "name":"Taliban Control",
+               "x":3912,
+               "y":1080
+            }
+         ]
+      },
+      {
+         "name":"Baghlan",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":"Pop / Econ Button",
+               "x":3647,
+               "y":900
+            },
+            {
+               "name":"Uncontrolled",
+               "x":3581,
+               "y":851
+            }
+         ]
+      },
+      {
+         "name":"Badakhshan",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":"Pop / Econ Button",
+               "x":4029,
+               "y":451
+            },
+            {
+               "name":"Uncontrolled",
+               "x":3964,
+               "y":401
+            }
+         ]
+      },
+      {
+         "name":"Konduz",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":"Warlords Base",
+               "x":3601,
+               "y":580
+            },
+            {
+               "name":"Warlords Guerrilla Active",
+               "x":3515,
+               "y":551
+            },
+            {
+               "name":"Warlords Guerrilla Active",
+               "x":3426,
+               "y":512
+            },
+            {
+               "name":"Police",
+               "x":3758,
+               "y":360
+            },
+            {
+               "name":"Police",
+               "x":3716,
+               "y":347
+            },
+            {
+               "name":"Troops",
+               "x":3716,
+               "y":395
+            },
+            {
+               "name":"Pop / Econ Button",
+               "x":3670,
+               "y":514
+            },
+            {
+               "name":"Uncontrolled",
+               "x":3604,
+               "y":464
+            }
+         ]
+      },
+      {
+         "name":"Samangan",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":"Pop / Econ Button",
+               "x":3232,
+               "y":878
+            },
+            {
+               "name":"Uncontrolled",
+               "x":3165,
+               "y":828
+            }
+         ]
+      },
+      {
+         "name":"Sar-e-Pol",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":"Pop / Econ Button",
+               "x":2758,
+               "y":980
+            },
+            {
+               "name":"Uncontrolled",
+               "x":2691,
+               "y":930
+            }
+         ]
+      },
+      {
+         "name":"Balkh",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":"Warlords Base",
+               "x":2772,
+               "y":539
+            },
+            {
+               "name":"Pop / Econ Button",
+               "x":2839,
+               "y":472
+            },
+            {
+               "name":"Uncontrolled",
+               "x":2774,
+               "y":422
+            }
+         ]
+      },
+      {
+         "name":"Faryab",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":"Warlords Base",
+               "x":2396,
+               "y":835
+            },
+            {
+               "name":"Coalition Troops",
+               "x":2478,
+               "y":548
+            },
+            {
+               "name":"Warlords Guerrilla Active",
+               "x":2360,
+               "y":923
+            },
+            {
+               "name":"Warlords Guerrilla Active",
+               "x":2262,
+               "y":830
+            },
+            {
+               "name":"Pop / Econ Button",
+               "x":2464,
+               "y":766
+            },
+            {
+               "name":"Uncontrolled",
+               "x":2399,
+               "y":715
+            }
+         ]
+      },
+      {
+         "name":"Badghis",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":"Pop / Econ Button",
+               "x":1934,
+               "y":1226
+            },
+            {
+               "name":"Uncontrolled",
+               "x":1869,
+               "y":1175
+            }
+         ]
+      },
+      {
+         "name":"Herat",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":"Uncontrolled",
+               "x":1408,
+               "y":1272
+            },
+            {
+               "name":"Warlords Base",
+               "x":1406,
+               "y":1392
+            },
+            {
+               "name":"Warlords Guerrilla",
+               "x":1347,
+               "y":1552
+            },
+            {
+               "name":"Warlords Guerrilla Active",
+               "x":1476,
+               "y":1464
+            },
+            {
+               "name":"Taliban Guerrilla",
+               "x":1563,
+               "y":1496
+            },
+            {
+               "name":"Police",
+               "x":1292,
+               "y":1403
+            },
+            {
+               "name":"Troops",
+               "x":1276,
+               "y":1448
+            },
+            {
+               "name":"Pop / Econ Button",
+               "x":1473,
+               "y":1322
+            }
+         ]
+      },
+      {
+         "name":"Farah",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":"COIN Control",
+               "x":1305,
+               "y":1918
+            },
+            {
+               "name":"Police",
+               "x":1260,
+               "y":1752
+            },
+            {
+               "name":"Pop / Econ Button",
+               "x":1370,
+               "y":1968
+            }
+         ]
+      },
+      {
+         "name":"Nimruz",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":"Uncontrolled",
+               "x":1589,
+               "y":2351
+            },
+            {
+               "name":"Pop / Econ Button",
+               "x":1654,
+               "y":2400
+            }
+         ]
+      },
+      {
+         "name":"Helmand",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":"Taliban Base",
+               "x":2083,
+               "y":2670
+            },
+            {
+               "name":"Support",
+               "x":2100,
+               "y":2563
+            },
+            {
+               "name":"Warlords Base",
+               "x":1971,
+               "y":2673
+            },
+            {
+               "name":"Warlords Guerrilla Active",
+               "x":1760,
+               "y":2930
+            },
+            {
+               "name":"Warlords Guerrilla Active",
+               "x":1917,
+               "y":2718
+            },
+            {
+               "name":"Taliban Guerrilla",
+               "x":2124,
+               "y":2756
+            },
+            {
+               "name":"Taliban Guerrilla",
+               "x":2080,
+               "y":2794
+            },
+            {
+               "name":"Troops",
+               "x":1998,
+               "y":2906
+            },
+            {
+               "name":"Pop / Econ Button",
+               "x":2027,
+               "y":2609
+            },
+            {
+               "name":"Uncontrolled",
+               "x":1963,
+               "y":2559
+            }
+         ]
+      },
+      {
+         "name":"Kandahar",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":"Warlords Base",
+               "x":2360,
+               "y":2785
+            },
+            {
+               "name":"Support",
+               "x":2497,
+               "y":2674
+            },
+            {
+               "name":"Coalition Troops",
+               "x":2504,
+               "y":2922
+            },
+            {
+               "name":"Taliban Guerrilla",
+               "x":2625,
+               "y":2794
+            },
+            {
+               "name":"Police",
+               "x":2411,
+               "y":2883
+            },
+            {
+               "name":"Police",
+               "x":2465,
+               "y":2864
+            },
+            {
+               "name":"Troops",
+               "x":2440,
+               "y":2931
+            },
+            {
+               "name":"Pop / Econ Button",
+               "x":2424,
+               "y":2720
+            },
+            {
+               "name":"COIN Control",
+               "x":2359,
+               "y":2671
+            }
+         ]
+      },
+      {
+         "name":"Zabol",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":"Taliban Base",
+               "x":2919,
+               "y":2402
+            },
+            {
+               "name":"Coalition Troops",
+               "x":2810,
+               "y":2389
+            },
+            {
+               "name":"Taliban Guerrilla",
+               "x":2852,
+               "y":2459
+            },
+            {
+               "name":"Warlords Guerrilla",
+               "x":2743,
+               "y":2313
+            },
+            {
+               "name":"Pop / Econ Button",
+               "x":2993,
+               "y":2342
+            },
+            {
+               "name":"Uncontrolled",
+               "x":2928,
+               "y":2291
+            }
+         ]
+      },
+      {
+         "name":"Paktika",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":"Taliban Base",
+               "x":3327,
+               "y":2118
+            },
+            {
+               "name":"Opposition",
+               "x":3475,
+               "y":2009
+            },
+            {
+               "name":"Coalition Troops",
+               "x":3231,
+               "y":2064
+            },
+            {
+               "name":"Taliban Guerrilla",
+               "x":3308,
+               "y":2191
+            },
+            {
+               "name":"Pop / Econ Button",
+               "x":3403,
+               "y":2056
+            },
+            {
+               "name":"Taliban Control",
+               "x":3338,
+               "y":2005
+            }
+         ]
+      },
+      {
+         "name":"Bamian",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":"Warlords Guerrilla",
+               "x":2840,
+               "y":1266
+            },
+            {
+               "name":"Pop / Econ Button",
+               "x":3068,
+               "y":1251
+            },
+            {
+               "name":"Uncontrolled",
+               "x":3002,
+               "y":1201
+            }
+         ]
+      },
+      {
+         "name":"Ghowr",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":"Opposition",
+               "x":2134,
+               "y":1773
+            },
+            {
+               "name":"Warlords Guerrilla",
+               "x":1823,
+               "y":1823
+            },
+            {
+               "name":"Pop / Econ Button",
+               "x":2063,
+               "y":1820
+            },
+            {
+               "name":"Uncontrolled",
+               "x":1997,
+               "y":1771
+            }
+         ]
+      },
+      {
+         "name":"Oruzgan",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":"Taliban Base",
+               "x":2638,
+               "y":1933
+            },
+            {
+               "name":"Taliban Guerrilla",
+               "x":2664,
+               "y":2019
+            },
+            {
+               "name":"Pop / Econ Button",
+               "x":2579,
+               "y":1870
+            },
+            {
+               "name":"Taliban Control",
+               "x":2514,
+               "y":1819
+            },
+            {
+               "name":"Coalition Troops",
+               "x":2386,
+               "y":1997
+            }
+         ]
+      },
+      {
+         "name":"Ghazni",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":"Taliban Base",
+               "x":3158,
+               "y":1773
+            },
+            {
+               "name":"Coalition Troops",
+               "x":2983,
+               "y":1891
+            },
+            {
+               "name":"Taliban Guerrilla",
+               "x":3126,
+               "y":1837
+            },
+            {
+               "name":"Pop / Econ Button",
+               "x":3097,
+               "y":1714
+            },
+            {
+               "name":"Taliban Control",
+               "x":3032,
+               "y":1664
+            }
+         ]
+      },
+      {
+         "name":"Balochistan (Pakistan)",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":"Pop / Econ Button",
+               "x":2666,
+               "y":3098
+            }
+         ]
+      },
+      {
+         "name":"Waziristan (Pakistan)",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":"Taliban Base",
+               "x":3905,
+               "y":2242
+            },
+            {
+               "name":"Taliban Guerrilla",
+               "x":3847,
+               "y":2281
+            },
+            {
+               "name":"Pop / Econ Button",
+               "x":3984,
+               "y":2175
+            },
+            {
+               "name":"Taliban Guerrilla",
+               "x":3889,
+               "y":2303
+            }
+         ]
+      },
+      {
+         "name":"Northwest Frontier (Pakistan)",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":"Taliban Base",
+               "x":4466,
+               "y":1448
+            },
+            {
+               "name":"Pop / Econ Button",
+               "x":4537,
+               "y":1377
+            },
+            {
+               "name":"Taliban Guerrilla",
+               "x":4441,
+               "y":1515
+            },
+            {
+               "name":"Taliban Guerrilla",
+               "x":4383,
+               "y":1477
+            }
+         ]
+      },
+      {
+         "name":"Kabul-Tor Kham LOC",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":"LOC Button",
+               "x":3933,
+               "y":1307
+            }
+         ]
+      },
+      {
+         "name":"Kabul-Aibak LOC",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":"LOC Button",
+               "x":3453,
+               "y":907
+            }
+         ]
+      },
+      {
+         "name":"Shibirghan-Aibak LOC",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":"LOC Button",
+               "x":3023,
+               "y":587
+            }
+         ]
+      },
+      {
+         "name":"Farah-Kandahar LOC",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":"Police",
+               "x":2210,
+               "y":2200
+            },
+            {
+               "name":"LOC Button",
+               "x":2067,
+               "y":2127
+            }
+         ]
+      },
+      {
+         "name":"Toraghondi-Farah LOC",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":"Police",
+               "x":1666,
+               "y":1490
+            },
+            {
+               "name":"LOC Button",
+               "x":1673,
+               "y":1581
+            }
+         ]
+      },
+      {
+         "name":"Kandahar-Spin Boldak LOC",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":"LOC Button",
+               "x":2574,
+               "y":2513
+            }
+         ]
+      },
+      {
+         "name":"Kandahar-Kabul LOC",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":"LOC Button",
+               "x":3077,
+               "y":2012
+            }
+         ]
+      },
+      {
+         "name":"Overflow B",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":"Overflow B",
+               "x":5128,
+               "y":1389
+            }
+         ]
+      },
+      {
+         "name":"Map",
+         "map":"Main Map",
+         "x":500,
+         "y":0,
+         "pieces":[
+            {
+               "name":" (Place Removed Coalition Pieces)",
+               "x":831,
+               "y":881
+            },
+            {
+               "name":" (Here)",
+               "x":831,
+               "y":984
+            }
+         ]
+      },
+      {
+         "name":"Card Play Area",
+         "map":"Main Map",
+         "x":0,
+         "y":0,
+         "pieces":[
+            {
+               "name":"14. Economic Project",
+               "x":246,
+               "y":1476
+            },
+            {
+               "name":"06. US-Pakistan Talks",
+               "x":246,
+               "y":874
+            },
+            {
+               "name":" (42 Cards in Deck)",
+               "x":487,
+               "y":300
+            },
+            {
+               "name":" (Current Event Card ?)",
+               "x":250,
+               "y":1203
+            },
+            {
+               "name":" (Upcoming Event ?)",
+               "x":250,
+               "y":603
+            }
+         ]
+      },
+      {
+         "name":"Momentum",
+         "map":"Main Map",
+         "x":5565,
+         "y":0,
+         "pieces":[
+            {
+               "name":"59. Local Truce",
+               "x":5815,
+               "y":1634
+            },
+            {
+               "name":" (Momentum Cards ?)",
+               "x":5815,
+               "y":50
+            }
+         ]
+      }
+   ]
+}
