@@ -4,8 +4,7 @@
         {
             "name": "Launch index.html",
             "type": "firefox",
-            "request": "attach",
-            "file": "${workspaceRoot}/test/test1.html"
+            "request": "attach"
         }
     ]
 }
