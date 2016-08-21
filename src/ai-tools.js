@@ -18,6 +18,15 @@ function contains(array, item) {
 	return false;
 }
 
+function count(array, item) {
+	var count = 0;
+	for (var i = 0; i < array.length; i++) {
+		if (array[i] == item)
+			count++;
+	}
+	return count;
+}
+
 function d6() {
 	return Math.floor(6*Math.random())+1;
 }
@@ -29,11 +38,11 @@ function fixZoneParameter(zone, outType) {
         return zone;
 
     if (outType == 'string') {
-        console.log('INFO fixZoneParameter() converting from object to string for ' + zone.name);
+        //console.log('INFO fixZoneParameter() converting from object to string for ' + zone.name);
         return zone.name;
     }
     if (outType == 'object') {
-        console.log('INFO fixZoneParameter() converting from string to object for ' + zone);
+        //console.log('INFO fixZoneParameter() converting from string to object for ' + zone);
         return getZone(zone);
     }
     
@@ -103,6 +112,60 @@ function zoneContains(zone, pieceName) {
 	return false;
 }
 
+function zoneContainsExact(zone, pieceName) {
+    zone = fixZoneParameter(zone);
+
+	for (var i = 0; i < zone.pieces.length; i++) {
+		if (zone.pieces[i].name == pieceName)
+			return true;
+	}
+	return false;
+}
+
+function zoneControl(zone) {
+    zone = fixZoneParameter(zone);
+
+    // 0 = Uncontrolled; <0 = Taliban Control; >0 = COIN Control
+    var coinCount = countAtZone(zone.name, "Coalition ") + countAtZone(zone.name, "Troops") +
+        countAtZone(zone.name, "Police") + countAtZone(zone.name, "GOVT Base");
+    var talibanCount = countAtZone(zone.name, "Taliban ");
+    var warlordsCount = countAtZone(zone.name, "Warlords ");
+    var controlDifference = coinCount - talibanCount;
+    if (warlordsCount > 0 && controlDifference != 0) {
+        if (Math.abs(controlDifference) <= warlordsCount)
+            controlDifference = 0;
+        else if (controlDifference < 0) {
+            controlDifference += warlordsCount;
+        } else {
+            controlDifference -= warlordsCount;
+        }
+    }
+    console.log('zoneControl(' + zone.name + ') = ' + controlDifference);
+    return controlDifference;
+}
+
+function zoneControlCounts(zone) {
+    zone = fixZoneParameter(zone);
+
+    // 0 = Uncontrolled; <0 = Taliban Control; >0 = COIN Control
+    var coinCount = countAtZone(zone.name, "Coalition ") + countAtZone(zone.name, "Troops") +
+        countAtZone(zone.name, "Police") + countAtZone(zone.name, "GOVT Base");
+    var talibanCount = countAtZone(zone.name, "Taliban ");
+    var warlordsCount = countAtZone(zone.name, "Warlords ");
+    var controlDifference = coinCount - talibanCount;
+    if (warlordsCount > 0 && controlDifference != 0) {
+        if (Math.abs(controlDifference) <= warlordsCount)
+            controlDifference = 0;
+        else if (controlDifference < 0) {
+            controlDifference += warlordsCount;
+        } else {
+            controlDifference -= warlordsCount;
+        }
+    }
+    console.log('zoneControlCounts(' + zone.name + ') = ' + controlDifference);
+    return {controlDifference: controlDifference, taliban: talibanCount, warlords: warlordsCount, coin: coinCount};
+}
+
 function isAdjacent(target, origin) {
     if (typeof target == 'string') msgPush("ASSERT FAILED isAdjacent(): target is string instead of Zone");
     origin = fixZoneParameter(origin, 'string');
@@ -125,14 +188,29 @@ function deactivateZonePieces(zone, pieceName) {
 	}
 }
 
-function removePiece(zone, pieceName) {
-    zone = fixZoneParameter(zone);
+function activatePiece(zone, pieceName) {
+	zone = fixZoneParameter(zone);
 
-    var activePieceName = pieceName + ' Active';
-    for (var i = 0; i < zone.pieces.length; i++) {
-		if (zone.pieces[i].name == activePieceName) {
-			zone.pieces.splice(i, 1);
-			return activePieceName;
+	var activePieceName = pieceName + ' Active';
+	for (var i = 0; i < zone.pieces.length; i++) {
+		if (zone.pieces[i].name == pieceName) {
+			zone.pieces[i].name = activePieceName;
+			return;
+		}
+	}
+}
+
+function removePiece(zone, pieceName, preferUnderground) {
+    zone = fixZoneParameter(zone);
+	preferUnderground = preferUnderground || false;
+
+	if (!preferUnderground) {
+		var activePieceName = pieceName + ' Active';
+		for (var i = 0; i < zone.pieces.length; i++) {
+			if (zone.pieces[i].name == activePieceName) {
+				zone.pieces.splice(i, 1);
+				return activePieceName;
+			}
 		}
 	}
 	for (var i = 0; i < zone.pieces.length; i++) {
@@ -141,16 +219,29 @@ function removePiece(zone, pieceName) {
 			return pieceName;
 		}
 	}
+	if (preferUnderground) {
+		var activePieceName = pieceName + ' Active';
+		for (var i = 0; i < zone.pieces.length; i++) {
+			if (zone.pieces[i].name == activePieceName) {
+				zone.pieces.splice(i, 1);
+				return activePieceName;
+			}
+		}
+	}
     return false;
 }
 
-function movePiece(fromZone, toZone, pieceName, activate) {
+function movePiece(fromZone, toZone, pieceName, preferUnderground, activate) {
     fromZone = fixZoneParameter(fromZone, 'string');
     toZone = fixZoneParameter(toZone);
+	preferUnderground = preferUnderground || false;
+	activate = activate || false;
 
-    var pieceMoved = removePiece(fromZone, pieceName);
+	console.log('movePiece(' + fromZone + ', ' + toZone.name + ', ' + pieceName + ', ' + preferUnderground + ', ' + activate + ')');
+
+    var pieceMoved = removePiece(fromZone, pieceName, preferUnderground);
     if (!pieceMoved) {
-        msgPush("ASSERT FAILED movePiece(): origin has no piece requested for move");
+        msgPush("ASSERT FAILED movePiece(): origin '" + fromZone + "' has no piece requested for move to '" + toZone.name + "'");
         return false;
     }
     var destinationPiece = pieceMoved;
@@ -161,9 +252,37 @@ function movePiece(fromZone, toZone, pieceName, activate) {
     return pieceMoved;
 }
 
+function movePieces(fromZone, toZone, amount, pieceName, preferUnderground, activate) {
+	fromZone = fixZoneParameter(fromZone, 'string');
+    toZone = fixZoneParameter(toZone);
+	preferUnderground = preferUnderground || false;
+	activate = activate || false;
+
+	var p = [];
+	for (var i = 0; i < amount; i++) {
+		p.push(movePiece(fromZone, toZone, pieceName, preferUnderground, activate));
+	}
+	var pieceNameActive = pieceName + ' Active';
+	var activeMoved = count(p, pieceNameActive);
+	var undergroundMoved = count(p, pieceName);
+	console.log('movePieces(' + fromZone + ', ' + toZone.name + ', ' + pieceName + ', ' + amount + '): ' + activeMoved + ', ' + undergroundMoved);
+	// active
+	if (activeMoved > 0) {
+		msgPush("# Move " + activeMoved + " " + pieceNameActive + " from " + fromZone + " to " + toZone.name);
+	}
+	// underground
+	if (undergroundMoved > 0) {
+		msgPush("# Move " + undergroundMoved + " " + pieceName + " from " + fromZone + " to " + toZone.name);
+		if (activate)
+            msg[msg.length-1] += " and flip Active";
+	}
+	return p;
+}
+
 function countAtZone(zone, pieceName) {
     zone = fixZoneParameter(zone);
 
+    // count all base and unit pieces, ignore Control pieces
 	var count = 0;
     if (pieceName == "*") {
         count = zone.pieces.length;
@@ -171,7 +290,8 @@ function countAtZone(zone, pieceName) {
     else
     {
         for (var j = 0; j < zone.pieces.length; j++) {
-            if (zone.pieces[j].name.startsWith(pieceName)) count++;
+            var zonePiece = zone.pieces[j].name; 
+            if (zonePiece.startsWith(pieceName) && !zonePiece.endsWith('Control')) count++;
         }
     }
 	console.log("countAtZone() " + pieceName + " @ " + zone.name + " = " + count);
