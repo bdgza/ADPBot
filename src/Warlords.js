@@ -248,7 +248,7 @@ function warlordsRally() {
             // 3.2: Guerrillas but no Bases
             var baseProvinces = filterZones(kSpacesNonPakistan, function (zone) {
                 if (contains(activatedProvinces, zone.name)) return false;
-                return zone.warlords_base == 0 && warlords_guerrilla();
+                return zone.warlords_base == 0 && zone.warlords_guerrilla();
             });
             if (baseProvinces.length > 0) {
                 selected = pickRandomZone(baseProvinces);

@@ -16,8 +16,8 @@ function showGameState() {
     msgPush('');
 
     msgPush('** DECK');
-    msgPush('Current Card: ' + cardIndex[currentCard].name);
-    msgPush('Upcoming Card: ' + cardIndex[nextCard].name);
+    msgPush('Current Card: ' + (!currentCard ? 'None' : cardIndex[currentCard].name));
+    msgPush('Upcoming Card: ' + (!nextCard ? 'None' : cardIndex[nextCard].name));
     msgPush('Propaganda Cards Left in Deck: ' + propagandaCount);
     msgPush('');
     msgPush('** CAPABILITIES');
