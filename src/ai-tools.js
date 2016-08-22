@@ -31,6 +31,10 @@ function d6() {
 	return Math.floor(6*Math.random())+1;
 }
 
+function die(d) {
+	return Math.floor(d*Math.random())+1;
+}
+
 function fixZoneParameter(zone, outType) {
     outType = outType || 'object';
 
@@ -95,11 +99,302 @@ function findAvailableForces() {
 	availableBasesTaliban = countAtZone("Taliban Available Forces", "Taliban Base");
 }
 
-function adjustForReturnees() {
-    for (var key in provinces) {
-        provinces[key].pop += countAtZone(key, 'Returnees');
-        console.log('Population ' + key + ' = ' + provinces[key].pop);
+function setupProvinces() {
+	var provinces = {
+		"Badakhshan": {pop: 1, adjacencies: [ "Northwest Frontier (Pakistan)", "Nuristan", "Baghlan", "Konduz" ]},
+		"Badghis": {pop: 1, adjacencies: [ "Faryab", "Sar-e-Pol", "Ghowr", "Herat" ]},
+		"Baghlan": {pop: 2, adjacencies: [ "Konduz", "Badakhshan", "Nuristan", "Kabul", "Samangan", "Balkh" ]},
+		"Balkh": {pop: 2, adjacencies: [ "Konduz", "Baghlan", "Samangan", "Sar-e-Pol", "Faryab" ]},
+		"Balochistan (Pakistan)": {pop: 0, adjacencies: [ "Nimruz", "Helmand", "Kandahar", "Waziristan (Pakistan)" ]},
+		"Bamian": {pop: 1, adjacencies: [ "Samangan", "Kabul", "Khowst", "Ghazni", "Oruzgan", "Sar-e-Pol" ]},
+		"Farah": {pop: 0, adjacencies: [ "Herat", "Ghowr", "Nimruz" ]},
+		"Faryab": {pop: 1, adjacencies: [ "Balkh", "Sar-e-Pol", "Badghis" ]},
+		"Ghazni": {pop: 1, adjacencies: [ "Bamian", "Khowst", "Paktika", "Zabol", "Oruzgan" ]},
+		"Ghowr": {pop: 1, adjacencies: [ "Badghis", "Sar-e-Pol", "Oruzgan", "Helmand", "Nimruz", "Farah", "Herat" ]},
+		"Helmand": {pop: 1, adjacencies: [ "Oruzgan", "Kandahar", "Balochistan (Pakistan)", "Nimruz", "Ghowr" ]},
+		"Herat": {pop: 1, adjacencies: [ "Badghis", "Ghowr", "Farah" ]},
+		"Kabul": {pop: 3, adjacencies: [ "Baghlan", "Nuristan", "Khowst", "Bamian", "Samangan" ]},
+		"Kandahar": {pop: 2, adjacencies: [ "Oruzgan", "Zabol", "Waziristan (Pakistan)", "Balochistan (Pakistan)", "Helmand" ]},
+		"Khowst": {pop: 2, adjacencies: [ "Nuristan", "Northwest Frontier (Pakistan)", "Waziristan (Pakistan)", "Paktika", "Ghazni", "Bamian", "Kabul" ]},
+		"Konduz": {pop: 2, adjacencies: [ "Badakhshan", "Baghlan", "Balkh" ]},
+		"Nimruz": {pop: 0, adjacencies: [ "Ghowr", "Helmand", "Balochistan (Pakistan)", "Farah" ]},
+		"Northwest Frontier (Pakistan)": {pop: 1, adjacencies: [ "Waziristan (Pakistan)", "Khowst", "Nuristan", "Badakhshan" ]},
+		"Nuristan": {pop: 2, adjacencies: [ "Badakhshan", "Northwest Frontier (Pakistan)", "Khowst", "Kabul", "Baghlan" ]},
+		"Oruzgan": {pop: 1, adjacencies: [ "Bamian", "Ghazni", "Zabol", "Kandahar", "Helmand", "Ghowr", "Sar-e-Pol" ]},
+		"Paktika": {pop: 1, adjacencies: [ "Khowst", "Waziristan (Pakistan)", "Zabol", "Ghazni" ]},
+		"Samangan": {pop: 0, adjacencies: [ "Baghlan", "Kabul", "Bamian", "Sar-e-Pol", "Balkh" ]},
+		"Sar-e-Pol": {pop: 0, adjacencies: [ "Balkh", "Samangan", "Bamian", "Oruzgan", "Ghowr", "Badghis", "Faryab" ]},
+		"Waziristan (Pakistan)": {pop: 1, adjacencies: [ "Northwest Frontier (Pakistan)", "Balochistan (Pakistan)", "Kandahar", "Zabol", "Pakistan", "Khowst" ]},
+		"Zabol": {pop: 0, adjacencies: [ "Ghazni", "Paktika", "Waziristan (Pakistan)", "Kandahar", "Oruzgan" ]}
+	};
+	var locs = {
+		"Kabul-Tor Kham LOC": { econ: 4, adjacencies: [ "Nuristan", "Kabul", "Khowst", "Northwest Frontier (Pakistan)" ] },
+		"Kandahar-Spin Boldak LOC": { econ: 3, adjacencies: [ "Oruzgan", "Kandahar", "Zabol", "Waziristan (Pakistan)" ] },
+		"Kabul-Aibak LOC": { econ: 1, adjacencies: [ "Kabul", "Baghlan", "Balkh", "Samangan" ] },
+		"Shibirghan-Aibak LOC": { econ: 1, adjacencies: [ "Baghlan", "Balkh", "Faryab", "Sar-e-Pol", "Samangan" ] },
+		"Farah-Kandahar LOC": { econ: 1, adjacencies: [ "Farah", "Nimruz", "Helmand", "Kandahar", "Zabol", "Oruzgan", "Ghowr" ] },
+		"Toraghondi-Farah LOC": { econ: 1, adjacencies: [ "Badghis", "Ghowr", "Nimruz", "Farah", "Herat" ] },
+		"Kandahar-Kabul LOC": { econ: 1, adjacencies: [ "Kandahar", "Zabol", "Paktika", "Khowst", "Kabul", "Bamian", "Ghazni", "Oruzgan" ] }
+	};
+
+	for (var i = 0; i < kSpacesAndLoCSpaces.length; i++) {
+		var name = kSpacesAndLoCSpaces[i];
+		var zone = getZone(name);
+
+		// adjust pop for returnees
+		if (zoneContains(zone, 'Returnees'))
+			provinces[name].pop++;
+
+		// provinces info
+		if (provinces[name]) {
+			zone.pop = provinces[name].pop;
+			zone.adjacencies = provinces[name].adjacencies;
+		} else if (locs[name]) {
+			zone.econ = locs[name].econ;
+			zone.adjacencies = locs[name].adjacencies;
+		}
+		zone.returnees = zoneContains(zone, 'Returnees');
+		zone.terror = countAtZone(zone, 'Terror');
+
+		// count bases and Forces
+		zone.coalition_base = countAtZone(zone, "Coalition Base");
+		zone.coalition_troops = countAtZone(zone, "Coalition Troops");
+		zone.government_base = countAtZone(zone, "GOVT Base");
+		zone.troops = countAtZone(zone, "Troops");
+		zone.police = countAtZone(zone, "Police");
+		zone.taliban_base = countAtZone(zone, "Taliban Base");
+		zone.taliban_guerrilla_underground = countAtZoneExact(zone, "Taliban Guerrilla");
+		zone.taliban_guerrilla_active = countAtZoneExact(zone, "Taliban Guerrilla Active");
+		zone.warlords_base = countAtZone(zone, "Warlords Base");
+		zone.warlords_guerrilla_underground = countAtZoneExact(zone, "Warlords Guerrilla");
+		zone.warlords_guerrilla_active = countAtZoneExact(zone, "Warlords Guerrilla Active");
+
+		// functions
+		zone.empty = function() {
+			return !this.coin() && !this.taliban() && !this.warlords();
+		}
+		zone.coalition = function() {
+			return this.coalition_base + this.coalition_troops;
+		}
+		zone.government = function() {
+			return this.government_base + this.troops + this.police;
+		}
+		zone.coin = function() {
+			return this.coalition() + this.government();
+		}
+		zone.taliban = function() {
+			return this.taliban_base + this.taliban_guerrilla();
+		}
+		zone.warlords = function() {
+			return this.warlords_base + this.warlords_guerrilla();
+		}
+		zone.taliban_guerrilla = function () {
+			return this.taliban_guerrilla_active + this.taliban_guerrilla_underground;
+		};
+		zone.warlords_guerrilla = function () {
+			return this.warlords_guerrilla_active + this.warlords_guerrilla_underground;
+		};
+		zone.bases = function () {
+			return this.coalition_base + this.government_base + this.taliban_base + this.warlords_base;
+		}
+		zone.removeForce = function (piece, amount, preferUnderground) {
+			amount = amount || 1;
+			var pieceActive = piece+'_active';
+			var piece = (piece+'_underground' in this) ? piece+'_underground' : piece;
+			preferUnderground = preferUnderground || false || !(pieceActive in this);
+
+			var removed = {
+				underground: 0,
+				active: 0
+			}
+
+			if (amount > this[piece] + this[pieceActive]) msgPush("ASSERT FAILED zone.removeForce(): amount > present");
+
+			for (var i = 0; i < amount; i++) {
+				if (preferUnderground || this[pieceActive] == 0) {
+					this[piece]--;
+					removed.underground++;
+				}
+				else if (!preferUnderground || this[piece] == 0) {
+					this[pieceActive]--;
+					removed.active++;
+				}
+			}
+			if (piece.startsWith('warlords'))
+				availableForcesWarlords += amount;
+			else if (piece.startsWith('coalition'))
+				availableForcesCoalition += amount;
+			else if (piece.startsWith('taliban'))
+				availableForcesTaliban += amount;
+			else if (piece.startsWith('police'))
+				availableForcesPolice + amount;
+			else if (piece.startsWith('troops'))
+				availableForcesTroops += amount;
+
+			// active
+			if (removed.active) {
+				msgPush("# Remove " + removed.active + " " + pieceLabel[pieceActive] + " from " + this.name);
+			}
+			// underground
+			if (removed.underground > 0) {
+				msgPush("# Remove " + removed.underground + " " + pieceLabel[piece] + " from " + this.name);
+			}
+
+			return removed;
+		}
+		zone.moveForce = function (toZone, piece, amount, preferUnderground, activate) {
+			toZone = fixZoneParameter(toZone);
+			var pieceActive = piece+'_active';
+			var piece = (piece+'_underground' in this) ? piece+'_underground' : piece;
+			preferUnderground = preferUnderground || false;
+			activate = activate || false;
+			if (!(pieceActive in this)) {
+				preferUnderground = true;
+				activate = false;
+			}
+			var moved = {
+				underground: 0,
+				active: 0
+			}
+
+			if (amount > this[piece] + this[pieceActive]) msgPush("ASSERT FAILED zone.moveForce(): amount > present");
+
+			for (var i = 0; i < amount; i++) {
+				if (preferUnderground || this[pieceActive] == 0) {
+					this[piece]--;
+					moved.underground++;
+					toZone[activate ? pieceActive : piece]++;
+				}
+				else if (!preferUnderground || this[piece] == 0) {
+					this[pieceActive]--;
+					moved.active++;
+					toZone[pieceActive]++;
+				}
+			}
+
+			// active
+			if (moved.active) {
+				msgPush("# Move " + moved.active + " " + pieceLabel[pieceActive] + " from " + this.name + " to " + toZone.name);
+			}
+			// underground
+			if (moved.underground > 0) {
+				msgPush("# Move " + moved.underground + " " + pieceLabel[piece] + " from " + this.name + " to " + toZone.name);
+				if (activate)
+            		msg[msg.length-1] += " and flip Active";
+			}
+
+			return moved;
+		}
+		zone.activatePiece = function (piece) {
+			var undergroundPieceName = piece + '_underground';
+			var activePieceName = piece + '_active';
+			this[undergroundPieceName]--;
+			this[activePieceName]++;
+
+			msgPush('# Activate 1 ' + pieceLabel[piece] + ' in ' + this.name);
+		}
+		zone.setSupportLevel = function (newLevel) {
+			msgPush('# Set ' + this.supportlevel + ' in ' + this.name + ' to ' + newLevel);
+			this.supportlevel = newLevel;
+		}
+		zone.addTerror = function () {
+			msgPush('# Place Terror marker in ' + this.name);
+			this.terror++;
+		}
+
+		// get support level
+		if (zoneContains(zone, "Support"))
+			zone.supportlevel = "Support";
+		else if (zoneContains(zone, "Opposition"))
+			zone.supportlevel = "Opposition";
+		else
+			zone.supportlevel = "Neutral";
+
+		// get control
+		zone.getControlValue = function () {
+			// 0 = Uncontrolled; <0 = Taliban Control; >0 = COIN Control
+			var coinCount = this.coalition_base + this.coalition_troops + this.troops +
+				this.police + this.government_base; 
+			var talibanCount = this.taliban_base + this.taliban_guerrilla();
+			var warlordsCount = this.warlords_base + this.warlords_guerrilla();
+			var controlDifference = coinCount - talibanCount;
+			if (warlordsCount > 0 && controlDifference != 0) {
+				if (Math.abs(controlDifference) <= warlordsCount)
+					controlDifference = 0;
+				else if (controlDifference < 0) {
+					controlDifference += warlordsCount;
+				} else {
+					controlDifference -= warlordsCount;
+				}
+			}
+			console.log('zone.getControlValue(' + this.name + ') = ' + controlDifference);
+			return controlDifference;
+		}
+		zone.getControl = function () {
+			var control = this.getControlValue();
+			if (control < 0) return "Taliban Control";
+			if (control > 0) return "COIN Control";
+			return "Uncontrolled";
+		}
+
+		// output status
+		zone.print = function () {
+			msgPush('* ' + this.name);
+
+			if ('pop' in this) {
+				var popstr = this.pop;
+				if (this.returnees) popstr += ' (Returnees)';
+				msgPush('Population: ' + popstr);
+				msgPush('Level: ' + this.supportlevel);
+				msgPush('Control: ' + this.getControl());
+				if (this.terror)
+					msgPush('Terror: ' + this.terror);
+			}
+			if ('econ' in this) {
+				msgPush('Economic Value: ' + this.econ);
+			}
+
+			var props = [, "", "troops", "police", "taliban Base", "taliban Guerrilla", "Warlords Base", "Warlords Guerrilla"];
+			var props = {
+				"coalition_base": "Coalition Base", 
+				"coalition_troops": "Coalition Troops",
+				"government_base": "GOVT Base", 
+				"troops": "Troops", 
+				"police": "Police",
+				"taliban_base": "Taliban Base",
+				"taliban_guerrilla_underground": "Taliban Guerrilla",
+				"taliban_guerrilla_active": "Taliban Guerrilla Active",
+				"warlords_base": "Warlords Base",
+				"warlords_guerrilla_underground": "Warlords Guerrilla",
+				"warlords_guerrilla_active": "Warlords Guerrilla Active"
+			};
+			for (var propkey in props) {
+				var label = props[propkey];
+				if (this[propkey] > 0) {
+					msgPush(this[propkey] + 'x ' + label);
+				}
+			}
+		}
     }
+}
+
+function countAtZone(zone, pieceName) {
+    zone = fixZoneParameter(zone);
+
+    // count all base and unit pieces, ignore Control pieces
+	var count = 0;
+    if (pieceName == "*") {
+        count = zone.pieces.length;
+    }
+    else
+    {
+        for (var j = 0; j < zone.pieces.length; j++) {
+            var zonePiece = zone.pieces[j].name; 
+            if (zonePiece.startsWith(pieceName) && !zonePiece.endsWith('Control')) count++;
+        }
+    }
+	console.log("countAtZone() " + pieceName + " @ " + zone.name + " = " + count);
+	return count;
 }
 
 function zoneContains(zone, pieceName) {
@@ -112,6 +407,25 @@ function zoneContains(zone, pieceName) {
 	return false;
 }
 
+function countAtZoneExact(zone, pieceName) {
+    zone = fixZoneParameter(zone);
+
+    // count all base and unit pieces, ignore Control pieces
+	var count = 0;
+    if (pieceName == "*") {
+        count = zone.pieces.length;
+    }
+    else
+    {
+        for (var j = 0; j < zone.pieces.length; j++) {
+            var zonePiece = zone.pieces[j].name; 
+            if (zonePiece == pieceName) count++;
+        }
+    }
+	console.log("countAtZoneExact() " + pieceName + " @ " + zone.name + " = " + count);
+	return count;
+}
+
 function zoneContainsExact(zone, pieceName) {
     zone = fixZoneParameter(zone);
 
@@ -120,50 +434,6 @@ function zoneContainsExact(zone, pieceName) {
 			return true;
 	}
 	return false;
-}
-
-function zoneControl(zone) {
-    zone = fixZoneParameter(zone);
-
-    // 0 = Uncontrolled; <0 = Taliban Control; >0 = COIN Control
-    var coinCount = countAtZone(zone.name, "Coalition ") + countAtZone(zone.name, "Troops") +
-        countAtZone(zone.name, "Police") + countAtZone(zone.name, "GOVT Base");
-    var talibanCount = countAtZone(zone.name, "Taliban ");
-    var warlordsCount = countAtZone(zone.name, "Warlords ");
-    var controlDifference = coinCount - talibanCount;
-    if (warlordsCount > 0 && controlDifference != 0) {
-        if (Math.abs(controlDifference) <= warlordsCount)
-            controlDifference = 0;
-        else if (controlDifference < 0) {
-            controlDifference += warlordsCount;
-        } else {
-            controlDifference -= warlordsCount;
-        }
-    }
-    console.log('zoneControl(' + zone.name + ') = ' + controlDifference);
-    return controlDifference;
-}
-
-function zoneControlCounts(zone) {
-    zone = fixZoneParameter(zone);
-
-    // 0 = Uncontrolled; <0 = Taliban Control; >0 = COIN Control
-    var coinCount = countAtZone(zone.name, "Coalition ") + countAtZone(zone.name, "Troops") +
-        countAtZone(zone.name, "Police") + countAtZone(zone.name, "GOVT Base");
-    var talibanCount = countAtZone(zone.name, "Taliban ");
-    var warlordsCount = countAtZone(zone.name, "Warlords ");
-    var controlDifference = coinCount - talibanCount;
-    if (warlordsCount > 0 && controlDifference != 0) {
-        if (Math.abs(controlDifference) <= warlordsCount)
-            controlDifference = 0;
-        else if (controlDifference < 0) {
-            controlDifference += warlordsCount;
-        } else {
-            controlDifference -= warlordsCount;
-        }
-    }
-    console.log('zoneControlCounts(' + zone.name + ') = ' + controlDifference);
-    return {controlDifference: controlDifference, taliban: talibanCount, warlords: warlordsCount, coin: coinCount};
 }
 
 function isAdjacent(target, origin) {
@@ -178,68 +448,16 @@ function isAdjacent(target, origin) {
     return false;
 }
 
-function deactivateZonePieces(zone, pieceName) {
-    zone = fixZoneParameter(zone);
-    
-    var activePieceName = pieceName + ' Active';
-    for (var i = 0; i < zone.pieces.length; i++) {
-		if (zone.pieces[i].name == activePieceName)
-			zone.pieces[i].name = pieceName;
-	}
-}
-
-function activatePiece(zone, pieceName) {
-	zone = fixZoneParameter(zone);
-
-	var activePieceName = pieceName + ' Active';
-	for (var i = 0; i < zone.pieces.length; i++) {
-		if (zone.pieces[i].name == pieceName) {
-			zone.pieces[i].name = activePieceName;
-			return;
-		}
-	}
-}
-
-function removePiece(zone, pieceName, preferUnderground) {
-    zone = fixZoneParameter(zone);
-	preferUnderground = preferUnderground || false;
-
-	if (!preferUnderground) {
-		var activePieceName = pieceName + ' Active';
-		for (var i = 0; i < zone.pieces.length; i++) {
-			if (zone.pieces[i].name == activePieceName) {
-				zone.pieces.splice(i, 1);
-				return activePieceName;
-			}
-		}
-	}
-	for (var i = 0; i < zone.pieces.length; i++) {
-		if (zone.pieces[i].name == pieceName) {
-			zone.pieces.splice(i, 1);
-			return pieceName;
-		}
-	}
-	if (preferUnderground) {
-		var activePieceName = pieceName + ' Active';
-		for (var i = 0; i < zone.pieces.length; i++) {
-			if (zone.pieces[i].name == activePieceName) {
-				zone.pieces.splice(i, 1);
-				return activePieceName;
-			}
-		}
-	}
-    return false;
-}
-
+/*
 function movePiece(fromZone, toZone, pieceName, preferUnderground, activate) {
-    fromZone = fixZoneParameter(fromZone, 'string');
+    fromZone = fixZoneParameter(fromZone);
     toZone = fixZoneParameter(toZone);
 	preferUnderground = preferUnderground || false;
 	activate = activate || false;
 
-	console.log('movePiece(' + fromZone + ', ' + toZone.name + ', ' + pieceName + ', ' + preferUnderground + ', ' + activate + ')');
+	console.log('movePiece(' + fromZone.name + ', ' + toZone.name + ', ' + pieceName + ', ' + preferUnderground + ', ' + activate + ')');
 
-    var pieceMoved = removePiece(fromZone, pieceName, preferUnderground);
+    var pieceMoved = fromZone.removeForce(pieceName, 1, preferUnderground);
     if (!pieceMoved) {
         msgPush("ASSERT FAILED movePiece(): origin '" + fromZone + "' has no piece requested for move to '" + toZone.name + "'");
         return false;
@@ -277,41 +495,11 @@ function movePieces(fromZone, toZone, amount, pieceName, preferUnderground, acti
             msg[msg.length-1] += " and flip Active";
 	}
 	return p;
-}
-
-function countAtZone(zone, pieceName) {
-    zone = fixZoneParameter(zone);
-
-    // count all base and unit pieces, ignore Control pieces
-	var count = 0;
-    if (pieceName == "*") {
-        count = zone.pieces.length;
-    }
-    else
-    {
-        for (var j = 0; j < zone.pieces.length; j++) {
-            var zonePiece = zone.pieces[j].name; 
-            if (zonePiece.startsWith(pieceName) && !zonePiece.endsWith('Control')) count++;
-        }
-    }
-	console.log("countAtZone() " + pieceName + " @ " + zone.name + " = " + count);
-	return count;
-}
-
-function countBasesAtZone(zone) {
-    zone = fixZoneParameter(zone);
-
-	var count = 0;
-
-    for (var j = 0; j < zone.pieces.length; j++) {
-        var pieceName = zone.pieces[j].name;
-        if (pieceName.substring(pieceName.length - 4) == "Base") count++;
-    }
-	console.log("countBasesAtZone() " + zone.name + " = " + count);
-	return count;
-}
+}*/
 
 function getZone(zoneName) {
+	if (typeof zoneName !== 'string') msgPush('ASSERT FAILED getZone(): zoneName is already a zone');
+
 	for (var i = 0; i < zoneCount; i++) {
 		var zone = zones[i];
 		if (zone.name == zoneName) {
@@ -478,7 +666,24 @@ function pickRandomZone(candidates, selector) {
 		
 	console.log("pickRandomZone() selected " + kSpacesTable[spaceIndex]);
 	
-	return kSpacesTable[spaceIndex];
+	return getZone(kSpacesTable[spaceIndex]);
+}
+
+function pickRandomLOC(candidates) {
+	// econ 4?
+	for (var i = 0; i < candidates.length; i++) {
+		if (candidates[i].econ == 4)
+			return getZone(candidates[i]);
+	}
+
+	// econ 3?
+	for (var i = 0; i < candidates.length; i++) {
+		if (candidates[i].econ == 3)
+			returngetZone(candidates[i]);
+	}
+
+	// econ 1
+	return getZone(candidates[die(candidates.length)-1]);
 }
 
 function filterZones(candidates, selector) {

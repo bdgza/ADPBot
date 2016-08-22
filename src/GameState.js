@@ -11,7 +11,7 @@ function showGameState() {
     msgPush('Islamabad: ' + islamabad);
     msgPush('');
 
-    msgPush('** ELIGABILITY');
+    msgPush('** ELIGIBILITY');
     msgPush('#todo');
     msgPush('');
 
@@ -26,9 +26,8 @@ function showGameState() {
     msgPush('** MOMENTUM');
     if (momentum.length == 0)
         msgPush('None');
-    momentum.forEach(function (card) {
-        msgPush(cardIndex[card].name);
-    });
+    for (var i = 0; i < momentum.length; i++)
+        msgPush(cardIndex[momentum[i]].name);
 
     msgPush('');
     msgPush('** COALITION');
@@ -54,61 +53,17 @@ function showGameState() {
     msgPush('Available Bases: ' + availableBasesWarlords);
     msgPush('Available Troops: ' + availableForcesWarlords);
 
-    // LOCs
+    // Provinces + LOCs
 
     msgPush('');
-    msgPush('** LOCs');
+    msgPush('** PROVINCES & LOCs');
     msgPush('');
 
-    for (var key in locs) {
-        msgPush('* ' + key);
-        var loc = locs[key];
-        msgPush('Economic Value: ' + loc.econ);
-        msgPush('');
-    }
+    for (var key in kSpacesAndLoCSpaces) {
+        var zone = getZone(kSpacesAndLoCSpaces[key]);
 
-    // Provinces
+        zone.print();
 
-    var props = ["Coalition Base", "Coalition Troops", "GOVT Base", "Troops", "Police", "Taliban Base", "Taliban Guerrilla", "Warlords Base", "Warlords Guerrilla"];
-    
-    msgPush('** PROVINCES');
-    msgPush('');
-
-    for (var key in provinces) {
-        var province = provinces[key];
-        var zone = getZone(key);
-
-        msgPush('* ' + key);
-
-        var popstr = province.pop;
-        if (zoneContains(zone, 'Returnees'))
-            popstr += ' (Returnees)';
-
-        msgPush('Population: ' + popstr);
-
-        var support = 'Neutral';
-        if (zoneContains(zone, 'Support'))
-            support = 'Support';
-        if (zoneContains(zone, 'Opposition'))
-            support = 'Opposition';
-            
-        msgPush('Level: ' + support);
-
-        var control = 'Uncontrolled';
-        if (zoneContains(zone, 'COIN Control'))
-            control = 'COIN Control';
-        if (zoneContains(zone, 'Taliban Control'))
-            control = 'Taliban Control';
-
-        msgPush('Control: ' + control);
-
-        for (var pkey in props) {
-            var prop = props[pkey];
-            var count = countAtZone(zone.name, prop);
-            if (count > 0) {
-                msgPush(count + 'x ' + prop);
-            }
-        }
         msgPush('');
     }
 }

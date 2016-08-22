@@ -172,43 +172,39 @@ var kLoCSpaces = [
     "Toraghondi-Farah LOC",
     "Kandahar-Kabul LOC"
 ];
-var provinces = {
-	"Badakhshan": {pop: 1, adjacencies: [ "Northwest Frontier (Pakistan)", "Nuristan", "Baghlan", "Konduz" ]},
-	"Badghis": {pop: 1, adjacencies: [ "Faryab", "Sar-e-Pol", "Ghowr", "Herat" ]},
-	"Baghlan": {pop: 2, adjacencies: [ "Konduz", "Badakhshan", "Nuristan", "Kabul", "Samangan", "Balkh" ]},
-	"Balkh": {pop: 2, adjacencies: [ "Konduz", "Baghlan", "Samangan", "Sar-e-Pol", "Faryab" ]},
-	"Balochistan (Pakistan)": {pop: 0, adjacencies: [ "Nimruz", "Helmand", "Kandahar", "Waziristan (Pakistan)" ]},
-	"Bamian": {pop: 1, adjacencies: [ "Samangan", "Kabul", "Khowst", "Ghazni", "Oruzgan", "Sar-e-Pol" ]},
-	"Farah": {pop: 0, adjacencies: [ "Herat", "Ghowr", "Nimruz" ]},
-	"Faryab": {pop: 1, adjacencies: [ "Balkh", "Sar-e-Pol", "Badghis" ]},
-	"Ghazni": {pop: 1, adjacencies: [ "Bamian", "Khowst", "Paktika", "Zabol", "Oruzgan" ]},
-	"Ghowr": {pop: 1, adjacencies: [ "Badghis", "Sar-e-Pol", "Oruzgan", "Helmand", "Nimruz", "Farah", "Herat" ]},
-	"Helmand": {pop: 1, adjacencies: [ "Oruzgan", "Kandahar", "Balochistan (Pakistan)", "Nimruz", "Ghowr" ]},
-	"Herat": {pop: 1, adjacencies: [ "Badghis", "Ghowr", "Farah" ]},
-	"Kabul": {pop: 3, adjacencies: [ "Baghlan", "Nuristan", "Khowst", "Bamian", "Samangan" ]},
-	"Kandahar": {pop: 2, adjacencies: [ "Oruzgan", "Zabol", "Waziristan (Pakistan)", "Balochistan (Pakistan)", "Helmand" ]},
-	"Khowst": {pop: 2, adjacencies: [ "Nuristan", "Northwest Frontier (Pakistan)", "Waziristan (Pakistan)", "Paktika", "Ghazni", "Bamian", "Kabul" ]},
-	"Konduz": {pop: 2, adjacencies: [ "Badakhshan", "Baghlan", "Balkh" ]},
-    "Nimruz": {pop: 0, adjacencies: [ "Ghowr", "Helmand", "Balochistan (Pakistan)", "Farah" ]},
-	"Northwest Frontier (Pakistan)": {pop: 1, adjacencies: [ "Waziristan (Pakistan)", "Khowst", "Nuristan", "Badakhshan" ]},
-	"Nuristan": {pop: 2, adjacencies: [ "Badakhshan", "Northwest Frontier (Pakistan)", "Khowst", "Kabul", "Baghlan" ]},
-	"Oruzgan": {pop: 1, adjacencies: [ "Bamian", "Ghazni", "Zabol", "Kandahar", "Helmand", "Ghowr", "Sar-e-Pol" ]},
-	"Paktika": {pop: 1, adjacencies: [ "Khowst", "Waziristan (Pakistan)", "Zabol", "Ghazni" ]},
-	"Samangan": {pop: 0, adjacencies: [ "Baghlan", "Kabul", "Bamian", "Sar-e-Pol", "Balkh" ]},
-	"Sar-e-Pol": {pop: 0, adjacencies: [ "Balkh", "Samangan", "Bamian", "Oruzgan", "Ghowr", "Badghis", "Faryab" ]},
-	"Waziristan (Pakistan)": {pop: 1, adjacencies: [ "Northwest Frontier (Pakistan)", "Balochistan (Pakistan)", "Kandahar", "Zabol", "Pakistan", "Khowst" ]},
-	"Zabol": {pop: 0, adjacencies: [ "Ghazni", "Paktika", "Waziristan (Pakistan)", "Kandahar", "Oruzgan" ]}
-};
-var locs = {
-    "Kabul-Tor Kham LOC": { econ: 4, adjacencies: [ "Nuristan", "Kabul", "Khowst", "Northwest Frontier (Pakistan)" ] },
-	"Kandahar-Spin Boldak LOC": { econ: 3, adjacencies: [ "Oruzgan", "Kandahar", "Zabol", "Waziristan (Pakistan)" ] },
-    "Kabul-Aibak LOC": { econ: 1, adjacencies: [ "Kabul", "Baghlan", "Balkh", "Samangan" ] },
-    "Shibirghan-Aibak LOC": { econ: 1, adjacencies: [ "Baghlan", "Balkh", "Faryab", "Sar-e-Pol", "Samangan" ] },
-    "Farah-Kandahar LOC": { econ: 1, adjacencies: [ "Farah", "Nimruz", "Helmand", "Kandahar", "Zabol", "Oruzgan", "Ghowr" ] },
-    "Toraghondi-Farah LOC": { econ: 1, adjacencies: [ "Badghis", "Ghowr", "Nimruz", "Farah", "Herat" ] },
-    "Kandahar-Kabul LOC": { econ: 1, adjacencies: [ "Kandahar", "Zabol", "Paktika", "Khowst", "Kabul", "Bamian", "Ghazni", "Oruzgan" ] }
-};
-
+var kSpacesAndLoCSpaces = [
+	"Balochistan (Pakistan)", "Nimruz", "Farah",
+	"Herat", "Badghis", "Helmand",
+	"Zabol", "Oruzgan", "Paktika",
+	"Waziristan (Pakistan)", "Khowst", "Ghazni",
+	"Kabul",
+	"Nuristan", "Baghlan", "Northwest Frontier (Pakistan)",
+	"Konduz", "Badakhshan", "Samangan",
+	"Balkh", "Faryab", "Ghowr",
+	"Sar-e-Pol", "Bamian", "Kandahar",
+	"Kabul-Tor Kham LOC",
+	"Kandahar-Spin Boldak LOC",
+    "Kabul-Aibak LOC",
+    "Shibirghan-Aibak LOC",
+    "Farah-Kandahar LOC",
+    "Toraghondi-Farah LOC",
+    "Kandahar-Kabul LOC"
+];
+var pieceLabel = {
+	"coalition_base": "Coalition Base", 
+	"coalition_troops": "Coalition Troops",
+	"government_base": "GOVT Base",
+	"troops": "Troops",
+	"police": "Police",
+	"taliban_base": "Taliban Base",
+	"taliban_guerrilla": "Taliban Guerrilla",
+	"taliban_guerrilla_underground": "Taliban Guerrilla",
+	"taliban_guerrilla_active": "Taliban Guerrilla Active",
+	"warlords_base": "Warlords Base",
+	"warlords_guerrilla": "Warlords Guerrilla",
+	"warlords_guerrilla_underground": "Warlords Guerrilla",
+	"warlords_guerrilla_active": "Warlords Guerrilla Active"
+}
 
 
 // should consider event?
@@ -225,7 +221,7 @@ var momentum = getMomentumCards();
 
 findResources();
 findAvailableForces();
-adjustForReturnees();
+setupProvinces();
 
 // verbose setup
 
