@@ -71,3 +71,5 @@ On the wishlist for the future is the addition of events to the bots, so they ca
 ### Report Issues
 
 If you encounter any errors or problems running this bot, please report them here using _Issues_ so they can be fixed. If possible save the game in VASSAL (.vsav), copy the _vassal-raw.json_ file from your Home/User directory, copy the bot output from the chat area, and describe what action you took that led to the problem.
+
+You can also post comments on BGG here: https://boardgamegeek.com/thread/1626261/automated-bot-vassal-adp
