@@ -20,7 +20,12 @@ https://boardgamegeek.com/boardgame/127518/distant-plain
 
 ### How to Install
 
-Download the A_Distant_Plain_Bot.vmdx. In the VASSAL Module Manager, right-click on _A Distant Plain_ and choose _Add Extension..._. For more information consult your VASSAL documentation.
+You need to have _A Distant Plain_ module installed. Download the module and open it in VASSAL using the VASSAL Module Manager.
+http://www.vassalengine.org/wiki/Module:A_Distant_Plain
+
+Download the A_Distant_Plain_Bot.vmdx. In the VASSAL Module Manager, right-click on _A Distant Plain_ and choose _Add Extension..._.
+
+For more information on how to install modules and module extensions, please consult your VASSAL documentation.
 
 **Requirement:** The extension requires Java SE 7 or newer to work – it may not work on all versions of Java supported by VASSAL. It is recommended that you run the latest version of Java available.
 
