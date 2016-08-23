@@ -22,6 +22,8 @@ https://boardgamegeek.com/boardgame/127518/distant-plain
 
 Download the A_Distant_Plain_Bot.vmdx. In the VASSAL Module Manager, right-click on _A Distant Plain_ and choose _Add Extension..._. For more information consult your VASSAL documentation.
 
+**Requirement:** The extension requires Java SE 7 or newer to work – it may not work on all versions of Java supported by VASSAL. It is recommended that you run the latest version of Java available.
+
 ### How to Use
 
 In the "AI" window there are 4 checkboxes: "Coalition NP", "Government NP", "Warlords NP", "Taliban NP". These let the bot know which factions in the game are not played by human players but by the bots (NP, Non Player). Some decisions by the bot depend on if a faction is human controlled or not, so these should be set correctly before using any of the bot faction buttons. The "AI" window state is not saved with your VASSAL save game, so these checkboxes have to be reset on each reload of the game.
@@ -31,6 +33,27 @@ Using the "Game State" button the bot will write to the chat area a summary of h
 You have to decide based on the current card and eligibility when the bot should play. Since bots are not yet aware of any events or their effectiveness the event on the card has to be manually evualated, and if effective manually implemented. If the event is ineffective or the bot is not eligible to play the event then the button for the applicable faction should be pushed in the "AI" window. The bot will read through the current game situation and decide based on the bot flowchart which actions it should take. Its decisions are written as textual instruction to the VASSAL chat area. You should then manually implement each instruction as directed.
 
 The bot does not have a memory. Every time the button is pushed it will read the VASSAL game situation, and work through it's decision tree. Since sometimes die rolls are made the outcome can vary from run to run. The bot does not change anything in the game in VASSAL, so you can safely push the bot button and still ignore the result if you wish.
+
+### How It Works
+
+The A_Distant_Plain_Bot.vmdx is a VASSAL extension with custom Java code. The Java code plugs into the VASSAL engine to read the game situation as it is in the module. It also adds a window for the _AI_ buttons for the player to activate the bot. The game situation is encoded in a JSON object.
+
+The extension also contains a number of JavaScript files. The Java code will unpack these and then run them in a Java JavaScript runtime, passing the JSON object to the memory of the JavaScript engine. The JavaScript files will read and process the JSON object to form an overview of what the situation is in the game.
+
+The JavaScript engine will then write lines of output text to an array. Once the script is finished executing the Java code reads the output variable from the memory of the JavaScript engine. It is then written to the VASSAL chat area.
+
+| File | Purpose |
+| --- | --- |
+| ai-script.js | This is the main entry point for the bot script. It contains definitions of the game, and directs the execution to sub-routines.
+| ai-script.py | This is a Python script that is also run (the VASSAL extensions supports JavaScript and Python). As a development aid it outputs the JSON object to _vassal-raw.json_.
+| ai-tools.js | A library of utility functions that process the JSON and provide questions to bot logic about the game.
+| Coalition.js | The file loaded when the player presses _Coalition_.
+| GameState.js | The file loaded when player presses _Game State_.
+| Government.js | The file loaded when the player presses _Government_.
+| json2.js | Library to help the JavaScript engine parse JSON.
+| polyfill.js | Some JavaScript implementations missing from the Java JavaScript engine.
+| Taliban.js | The file loaded when the player presses _Taliban_.
+| Warlords.js | The file loaded when the player presses _Warlords_.
 
 ### Under Development
 
