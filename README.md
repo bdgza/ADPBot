@@ -60,6 +60,8 @@ The JavaScript engine will then write lines of output text to an array. Once the
 | Taliban.js | The file loaded when the player presses _Taliban_.
 | Warlords.js | The file loaded when the player presses _Warlords_.
 
+The custom Java code is available here: https://github.com/bdgza/coin
+
 ### Under Development
 
 This bot is still under development and not yet completed. The completed code needs further testing for correctness and stability, and the non-completed code needs to be further completed.
